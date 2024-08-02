@@ -1,6 +1,6 @@
 {
   "name": "semantic-release-monorepo",
-  "version": "8.0.4",
+  "version": "8.0.5",
   "description": "Plugins for `semantic-release` allowing it to be used with a monorepo.",
   "main": "src/index.js",
   "type": "module",
@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "semantic-release": ">=20.0.0"
+    "semantic-release": "~20.0.0"
   },
   "dependencies": {
     "debug": "^4.3.4",
