@@ -1,41 +1,45 @@
 {
   "name": "semantic-release-monorepo",
-  "version": "0.0.0-development",
+  "version": "8.1.0",
   "description": "Plugins for `semantic-release` allowing it to be used with a monorepo.",
   "main": "src/index.js",
-  "type": "module",
+  "type": "commonjs",
   "files": [
     "src"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "format": "prettier --write --single-quote --trailing-comma es5",
     "format:all": "yarn format \"./**/*.js\"",
-    "test": "vitest run --no-threads"
+    "test": "vitest run --pool=forks"
   },
   "license": "MIT",
   "peerDependencies": {
-    "semantic-release": ">=22.0.7"
+    "semantic-release": "21.0.0"
   },
   "dependencies": {
-    "debug": "^4.3.4",
-    "execa": "^5.1.1",
-    "file-url": "^3.0.0",
+    "debug": "^4.3.6",
+    "execa": "8.0.1",
+    "file-url": "^4.0.0",
     "fs-extra": "^10.0.1",
     "get-stream": "^6.0.1",
-    "git-log-parser": "^1.2.0",
-    "p-each-series": "^2.1.0",
-    "p-limit": "^3.1.0",
-    "pkg-up": "^3.1.0",
+    "git-log-parser": "^1.2.1",
+    "p-each-series": "^3.0.0",
+    "p-limit": "^4.0.0",
+    "pkg-up": "^4.0.0",
     "ramda": "^0.27.2",
-    "read-pkg": "^5.2.0",
-    "semantic-release-plugin-decorators": "^4.0.0",
-    "tempy": "1.0.1"
+    "read-pkg": "^9.0.1",
+    "semantic-release-plugin-decorators": "https://github.com/mjsorribas/semantic-release-plugin-decorators.git",
+    "tempy": "3.1.0"
   },
   "devDependencies": {
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^3.2.4",
-    "vitest": "0.34.6"
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.8",
+    "prettier": "^3.3.3",
+    "vite": "^5.0.0",
+    "vitest": "2.0.5"
   },
   "husky": {
     "hooks": {

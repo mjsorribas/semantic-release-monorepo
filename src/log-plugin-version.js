@@ -5,7 +5,7 @@ import createDebug from 'debug';
 
 const debug = createDebug('semantic-release:monorepo');
 
-const logPluginVersion = type => plugin => async (pluginConfig, config) => {
+const logPluginVersion = (type) => (plugin) => async (pluginConfig, config) => {
   if (config.options.debug) {
     const __dirname = dirname(fileURLToPath(import.meta.url));
     const { version } = await readPkg(resolve(__dirname, '../'));

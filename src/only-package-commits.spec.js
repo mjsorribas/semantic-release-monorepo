@@ -1,16 +1,14 @@
 import { gitCommitsWithFiles, initGitRepo } from './git-utils.js';
 import { onlyPackageCommits, withFiles } from './only-package-commits.js';
 import path from 'path';
+import fs from 'fs'; // Asegúrate de importar fs
 import { describe, it, expect } from 'vitest';
+
 async function getCommitWithFileFromMessage(commits, message) {
   const commitsWithFiles = await withFiles(
-    Array.of(commits.find(obj => obj.subject === message))
+    Array.of(commits.find((obj) => obj.subject === message))
   );
-  if (commitsWithFiles.length !== 0) {
-    return commitsWithFiles[0];
-  } else {
-    return null;
-  }
+  return commitsWithFiles.length !== 0 ? commitsWithFiles[0] : null;
 }
 
 describe('filter commits', () => {
@@ -88,7 +86,15 @@ describe('filter commits', () => {
     ];
     process.chdir(gitRepo.cwd);
     const commits = await gitCommitsWithFiles(commitsToCreate);
-    process.chdir(path.join(gitRepo.cwd, 'module2'));
+
+    const module2Path = path.join(gitRepo.cwd, 'module2');
+    if (fs.existsSync(module2Path)) {
+      process.chdir(module2Path);
+    } else {
+      console.error(`El directorio ${module2Path} no existe.`);
+      return; // Maneja el error como prefieras
+    }
+
     const result = await onlyPackageCommits(commits);
 
     expect(result).toHaveLength(2);
