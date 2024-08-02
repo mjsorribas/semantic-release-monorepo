@@ -11,13 +11,13 @@ const OPTIONS = {
   },
 };
 
-const even = n => n % 2 === 0;
-const toTag = x => `tag-${x}`;
+const even = (n) => n % 2 === 0;
+const toTag = (x) => `tag-${x}`;
 
 describe('semantic-release plugin options transforms', () => {
   describe('#mapCommits', () => {
     it('allows mapping the "commits" option', async () => {
-      const fn = commits => commits.filter(even);
+      const fn = (commits) => commits.filter(even);
 
       expect(await mapCommits(fn)(OPTIONS)).toEqual({
         ...OPTIONS,

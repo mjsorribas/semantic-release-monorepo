@@ -4,7 +4,7 @@ import path from 'path';
 import { describe, it, expect } from 'vitest';
 async function getCommitWithFileFromMessage(commits, message) {
   const commitsWithFiles = await withFiles(
-    Array.of(commits.find(obj => obj.subject === message))
+    Array.of(commits.find((obj) => obj.subject === message))
   );
   if (commitsWithFiles.length !== 0) {
     return commitsWithFiles[0];
